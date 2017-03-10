@@ -46,6 +46,13 @@ d3.csv(file, function(error, data) {
 
     // Set up the binning parameters for the histogram
     var nbins = data.length;
+    // // Freedman–Diaconis rule used to set number of bins
+    // var sorted_data = data.map(function(d){return d.Value}).sort()
+    // var q1 = sorted_data[Math.floor((sorted_data.length / 4))];
+    // var q3 = sorted_data[Math.ceil((sorted_data.length * (3 / 4)))]
+    // var iqr = q3 - q1;
+    // var nbins = (Math.max.apply(null, sorted_data)-Math.min.apply(null, sorted_data)) / (2*iqr/Math.pow(sorted_data.length, 1 / 3))
+
     var histogram = d3.histogram()
       .domain(x.domain())
       .thresholds(x.ticks(nbins))
