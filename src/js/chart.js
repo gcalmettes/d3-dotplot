@@ -46,12 +46,12 @@ d3.csv(file, function(error, data) {
 
     // Set up the binning parameters for the histogram
     var nbins = data.length;
-    
+
     var histogram = d3.histogram()
       .domain(x.domain())
       // Freedman–Diaconis rule
       // .thresholds(d3.thresholdFreedmanDiaconis(data.map(function (d){ return d.Value}),
-      //                                          Math.min.apply(null, data.map(function (d){ return d.Value})), 
+      //                                          Math.min.apply(null, data.map(function (d){ return d.Value})),
       //                                          Math.max.apply(null, data.map(function (d){ return d.Value}))))
       .thresholds(x.ticks(nbins))
       .value(function(d) { return d.Value;} )
@@ -120,42 +120,13 @@ d3.csv(file, function(error, data) {
         return (d.length==0) ? 0 : radius; });
       // .style("fill", "black");;
 
-
-    // dots.transition()
-    //     .duration(500)
-    //     // .attr("cy", function(d) {
-    //     //     return y(d.idx)-radius; });
-    //     .attr("r", function(d) {
-    //       return (d.length==0) ? 0 : radius; });
-    //     // .style("fill", "black");
-
-    // dots.on("mouseover", function(d) {
-    //     d3.select(this)
-    //       .style("fill", "red")
-    //     tooltip.transition()
-    //          .duration(200)
-    //          .style("opacity", .9);
-    //     tooltip.html(d.name + "<br/> (" + d.value + ")")
-    //       .style("left", d3.select(this).attr("cx") + "px")
-    //       .style("top", (d3.select(this).attr("cy")-50) + "px");
-    //   })
-    //   .on("mouseout", function(d) {
-    //     d3.select(this)
-    //         .style("fill", "steelblue");
-    //       tooltip.transition()
-    //            .duration(500)
-    //            .style("opacity", 0);
-    //   });
-
-
-
-    svg.append("g")
-    .attr("class", "axis axis--x")
-    .attr("transform", "translate(0," + height + ")")
-    .call(d3.axisBottom(x));
-
 });
 };
+
+svg.append("g")
+.attr("class", "axis axis--x")
+.attr("transform", "translate(0," + height + ")")
+.call(d3.axisBottom(x));
 
 //draw everything
 update();
