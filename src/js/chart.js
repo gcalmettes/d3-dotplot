@@ -5,7 +5,8 @@ var margin = {top: 10, right: 30, bottom: 30, left: 30},
 
 // Set the ranges
 var x = d3.scaleLinear()
-    .rangeRound([0, width]);
+    .rangeRound([0, width])
+    .domain([2, 11]);
 var y = d3.scaleLinear()
     .range([height, 0]);
 
@@ -40,7 +41,6 @@ d3.csv(file, function(error, data) {
 
     // Scale the range of the data
     // x.domain(d3.extent(data, function(d) { return d.Value; }));
-    x.domain([2, 11]);
     y.domain([0, data.length]);
 
 
